@@ -99,43 +99,43 @@ export function exportInvitationAsImage(data: InvitationData): void {
         const imageURI = canvas.toDataURL('image/png');
         
         // Download link For invitaion
-        const link = document.createElement('a');
-        link.download = `Wedding_Invitation_${data.code}.png`;
-        link.href = imageURI;
-        link.click();
+        // const link = document.createElement('a');
+        // link.download = `Wedding_Invitation_${data.code}.png`;
+        // link.href = imageURI;
+        // link.click();
 
         // testing view only on new tabs
-        // const newTab = window.open();
-        // if (newTab) {
-        //     newTab.document.write(`
-        //         <html>
-        //             <head>
-        //                 <title>Wedding Invitation - ${data.name}</title>
-        //                 <style>
-        //                     body {
-        //                         margin: 0;
-        //                         background-color: #1a1a1a;
-        //                         display: flex;
-        //                         justify-content: center;
-        //                         align-items: center;
-        //                         min-height: 100vh;
-        //                     }
-        //                     img {
-        //                         max-width: 100%;
-        //                         height: auto;
-        //                         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        //                     }
-        //                 </style>
-        //             </head>
-        //             <body>
-        //                 <img src="${imageURI}" alt="Wedding Invitation" />
-        //             </body>
-        //         </html>
-        //     `);
-        //     newTab.document.close();
-        // } else {
-        //     alert('Popup blocked! Please allow popups to view the invitation image.');
-        // }
+        const newTab = window.open();
+        if (newTab) {
+            newTab.document.write(`
+                <html>
+                    <head>
+                        <title>Wedding Invitation - ${data.name}</title>
+                        <style>
+                            body {
+                                margin: 0;
+                                background-color: #1a1a1a;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                min-height: 100vh;
+                            }
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <img src="${imageURI}" alt="Wedding Invitation" />
+                    </body>
+                </html>
+            `);
+            newTab.document.close();
+        } else {
+            alert('Popup blocked! Please allow popups to view the invitation image.');
+        }
     };
 
     bgImage.onerror = () => {
